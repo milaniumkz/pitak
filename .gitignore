@@ -22,3 +22,5 @@
 **/firebase/hosting/
 /release/
 /*.zip
+**/.flutter-plugins-dependencies
+**/.flutter-plugins
