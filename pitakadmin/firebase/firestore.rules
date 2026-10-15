@@ -1,0 +1,86 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function userRef() { return /databases/$(database)/documents/users/$(request.auth.uid); }
+    function admin() { return signedIn() && request.auth.uid in ['kfqg1wiE1uNbOMz1u8wDCuAbmOB3', 'mcE2t2UrWLburWpBKfp0DEqzsUP2']; }
+    function active() { return signedIn() && (!exists(userRef()) || get(userRef()).data.get('disabled', false) == false); }
+    function unblocked(a, b) {
+      let aUid = get(a).data.uid;
+      let bUid = get(b).data.uid;
+      return a == /databases/$(database)/documents/users/$(aUid)
+        && b == /databases/$(database)/documents/users/$(bUid)
+        && !exists(/databases/$(database)/documents/users/$(aUid)/blocks/$(bUid))
+        && !exists(/databases/$(database)/documents/users/$(bUid)/blocks/$(aUid));
+    }
+    function chatMember(data) { return signedIn() && userRef() in data.users; }
+    function chatOpen(data) { return active() && chatMember(data) && unblocked(data.user_a, data.user_b); }
+    match /users/{uid} {
+      allow read: if admin() || (signedIn() && request.auth.uid == uid);
+      allow create: if active() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['uid','email','display_name','photo_url','phone_number','created_time'])
+        && request.resource.data.uid == uid
+        && request.resource.data.get('phone_number', '') == request.auth.token.get('phone_number', '')
+        && request.resource.data.get('email', '') == request.auth.token.get('email', '');
+      allow update: if admin() || (active() && request.auth.uid == uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['display_name','photo_url']));
+      allow delete: if admin();
+      match /blocks/{blockedUid} {
+        allow read: if signedIn() && request.auth.uid == uid;
+        allow create, update: if active() && request.auth.uid == uid && uid != blockedUid
+          && request.resource.data.keys().hasOnly(['createdAt']);
+        allow delete: if signedIn() && request.auth.uid == uid;
+      }
+    }
+    match /public_profiles/{uid} { allow read: if true; allow write: if false; }
+    match /ob/{id} {
+      allow read: if resource.data.status == 1 || admin() || (signedIn() && resource.data.idUser == userRef());
+      allow create: if active() && request.resource.data.idUser == userRef() && request.resource.data.status == 2
+        && request.resource.data.title is string && request.resource.data.title.size() > 0 && request.resource.data.title.size() <= 200
+        && request.resource.data.text is string && request.resource.data.text.size() <= 10000
+        && request.resource.data.phone == request.auth.token.get('phone_number', '')
+        && request.resource.data.keys().hasOnly(['idUser','title','text','status','image','data','city','kat','phone','isLike']);
+      allow update: if admin() || (active() && (
+        (resource.data.idUser == userRef() && request.resource.data.idUser == resource.data.idUser && request.resource.data.status == 2
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['title','text','image','city','kat','status']))
+        || (resource.data.status == 1 && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isLike'])
+          && request.resource.data.isLike is list
+          && request.resource.data.isLike.removeAll([userRef()]) == resource.data.get('isLike', []).removeAll([userRef()])))
+      );
+      allow delete: if admin() || (active() && resource.data.idUser == userRef());
+    }
+    match /favoritUser/{id} {
+      allow create: if active() && request.resource.data.iduser == userRef();
+      allow read, delete: if admin() || (signedIn() && resource.data.iduser == userRef());
+      allow update: if active() && resource.data.iduser == userRef() && request.resource.data.iduser == userRef();
+    }
+    match /chats/{id} {
+      allow read: if admin() || chatMember(resource.data);
+      allow create: if chatOpen(request.resource.data)
+        && request.resource.data.users == [request.resource.data.user_a, request.resource.data.user_b]
+        && request.resource.data.user_a != request.resource.data.user_b;
+      allow update: if chatOpen(resource.data)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['last_message','last_message_time','last_message_sent_by','last_message_seen_by'])
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['last_message_sent_by']) || request.resource.data.last_message_sent_by == userRef());
+      allow delete: if admin();
+    }
+    match /chat_messages/{id} {
+      allow read: if admin() || chatMember(get(resource.data.chat).data);
+      allow create: if chatOpen(get(request.resource.data.chat).data) && request.resource.data.user == userRef()
+        && request.resource.data.keys().hasOnly(['user','chat','text','image','timestamp'])
+        && request.resource.data.get('text', '') is string && request.resource.data.get('text', '').size() <= 10000;
+      allow update, delete: if admin();
+    }
+    match /disput/{id} {
+      allow create: if active() && request.resource.data.idUser == userRef()
+        && request.resource.data.text is string && request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 3000
+        && request.resource.data.keys().hasOnly(['idOb','idUser','reportedUser','chat','text','image','createdAt']);
+      allow read, update, delete: if admin();
+    }
+    match /{collection}/{id} {
+      allow read: if collection in ['kat','city','region','about','phone','politika','uslovia','tarif','slovar','otzyv'];
+      allow write: if admin() && collection in ['kat','city','region','about','phone','politika','uslovia','tarif','slovar','otzyv','admin'];
+      allow read: if admin() && collection == 'admin';
+    }
+  }
+}

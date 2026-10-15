@@ -1,0 +1,4 @@
+storeFile=/secure/pitak-upload.keystore
+storePassword=SET_FROM_SECRET_STORE
+keyAlias=key0
+keyPassword=SET_FROM_SECRET_STORE

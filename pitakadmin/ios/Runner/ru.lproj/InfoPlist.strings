@@ -1,0 +1,2 @@
+NSCameraUsageDescription = "photo profile and order";
+NSPhotoLibraryUsageDescription = "photo profile and order";

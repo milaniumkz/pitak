@@ -1,0 +1,170 @@
+{
+  "project_info": {
+    "project_number": "120486921864",
+    "project_id": "pitak-8dfc0",
+    "storage_bucket": "pitak-8dfc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120486921864:android:21f606983597056170413d",
+        "android_client_info": {
+          "package_name": "com.milanium.pitak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120486921864-kaalput2v8pdjshn8bcjn5nnfbu14av3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.milanium.pitak",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "120486921864-ft8fgch6vc2squ66da8r2imnfbmfn9u6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf9UlV27jmkrSVuco-69YlPSw4rl7Zpco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120486921864-ft8fgch6vc2squ66da8r2imnfbmfn9u6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "120486921864-6lqgpo1m6objv5t4trq3bn9r1dv3jskb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.milanium.pitakadmin"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120486921864:android:ae941428103ec8c970413d",
+        "android_client_info": {
+          "package_name": "com.milanium.pitakadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120486921864-tcousocgfm3i73s43k18o7l0j8tn870p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.milanium.pitakadmin",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "120486921864-ft8fgch6vc2squ66da8r2imnfbmfn9u6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf9UlV27jmkrSVuco-69YlPSw4rl7Zpco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120486921864-ft8fgch6vc2squ66da8r2imnfbmfn9u6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "120486921864-6lqgpo1m6objv5t4trq3bn9r1dv3jskb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.milanium.pitakadmin"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120486921864:android:65e2d2c0d5ad2cc070413d",
+        "android_client_info": {
+          "package_name": "com.pitak.milanium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120486921864-ft8fgch6vc2squ66da8r2imnfbmfn9u6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf9UlV27jmkrSVuco-69YlPSw4rl7Zpco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120486921864-ft8fgch6vc2squ66da8r2imnfbmfn9u6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "120486921864-6lqgpo1m6objv5t4trq3bn9r1dv3jskb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.milanium.pitakadmin"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120486921864:android:746259279bc3096b70413d",
+        "android_client_info": {
+          "package_name": "com.pitakAdmin.milanium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120486921864-ft8fgch6vc2squ66da8r2imnfbmfn9u6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf9UlV27jmkrSVuco-69YlPSw4rl7Zpco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120486921864-ft8fgch6vc2squ66da8r2imnfbmfn9u6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "120486921864-6lqgpo1m6objv5t4trq3bn9r1dv3jskb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.milanium.pitakadmin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

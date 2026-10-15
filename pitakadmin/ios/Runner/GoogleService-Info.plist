@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>120486921864-kaalput2v8pdjshn8bcjn5nnfbu14av3.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC-Amk8ImBMOBaMHJJKD7DHnkq_mNF71bQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>120486921864</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.pitakAdmin.milanium</string>
+	<key>PROJECT_ID</key>
+	<string>pitak-8dfc0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pitak-8dfc0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:120486921864:ios:24ff0e16c49ecd7a70413d</string>
+</dict>
+</plist>
